@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Base64 Converter</title>
+</head>
+<body>
+    <input type="file" id="imageInput" accept="image/*" onchange="convertToBase64()">
+    <script>
+        function convertToBase64() {
+            const fileInput = document.getElementById('imageInput');
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64String = e.target.result;
+                    window.AppInventor.setWebViewString(base64String);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>
